@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_delivery/src/pages/models/user.dart';
-import 'package:flutter_app_delivery/src/pages/providers/users_provider.dart';
+import 'package:flutter_app_delivery/src/providers/users_provider.dart';
+import 'package:flutter_app_delivery/src/models/user.dart';
 import 'package:get/get.dart';
 
 class RegisterController extends GetxController{

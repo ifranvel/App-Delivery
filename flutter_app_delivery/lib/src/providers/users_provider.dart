@@ -1,5 +1,5 @@
-import 'package:flutter_app_delivery/src/pages/environment/environment.dart';
-import 'package:flutter_app_delivery/src/pages/models/user.dart';
+import 'package:flutter_app_delivery/src/environment/environment.dart';
+import 'package:flutter_app_delivery/src/models/user.dart';
 import 'package:get/get.dart';
 
 class UsersProvider extends GetConnect {
