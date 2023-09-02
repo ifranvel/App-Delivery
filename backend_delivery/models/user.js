@@ -5,11 +5,7 @@ const User = {};
 User.create = (user, result) => {
 
     const sql = `
-        INSER INTO
-        user(
-            email, name, lastname, phone, image, password, created_at, updated_at
-        )
-        VALUES(?,?,?,?,?,?,?,?)
+        INSERT INTO user (email, name, lastname, phone, image, password, created_at, updated_at) VALUES (?,?,?,?,?,?,?,?)
     `;
     
     db.query(
@@ -20,6 +16,7 @@ User.create = (user, result) => {
             user.lastname,
             user.phone,
             user.image,
+            user.password,
             new Date(),
             new Date()
         ],
