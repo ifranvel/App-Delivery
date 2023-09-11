@@ -25,7 +25,7 @@ User.findById = (id, result) => {
 User.findByEmail = (email, result) => {
 
     const sql = `
-    SELECT id, email, name, lastname, image, password FROM user WHERE email = ?
+    SELECT id, email, name, lastname, phone, image, password FROM user WHERE email = ?
     `;
 
     db.query(

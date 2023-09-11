@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_delivery/src/models/response_api.dart';
 import 'package:flutter_app_delivery/src/providers/users_provider.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class LoginController extends GetxController{
 
@@ -25,12 +26,19 @@ class LoginController extends GetxController{
       ResponseApi responseApi = await usersProvider.login(email, password);
 
       if(responseApi.success == true){
-        Get.snackbar("Login exitoso", responseApi.message ?? "");
+        GetStorage().write("user", responseApi.data);
+        goToHomePage();
+        //Get.snackbar("Login exitoso", responseApi.message ?? "");
       }else{
         Get.snackbar("Login fallido", responseApi.message ?? "");
       }
       
     }
+  }
+
+  void goToHomePage(){
+    //Get.toNamed("/home");
+    Get.offNamedUntil("/home", (route) => false);
   }
 
   bool _ValidationLogin(String email, String password){
