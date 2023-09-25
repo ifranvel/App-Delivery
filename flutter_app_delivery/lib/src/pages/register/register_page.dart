@@ -9,7 +9,7 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   return Scaffold(
+    return Scaffold(
         bottomNavigationBar: SizedBox(
           height: 70,
           child: _textDontHaveAccount(),
@@ -18,13 +18,12 @@ class RegisterPage extends StatelessWidget {
           child: Stack(children: [
             _backgroundCover(context),
             _goBackButton(),
-            _userAvatar(),
+            _userAvatar(context),
             _boxForm(context),
           ]),
         ));
   }
 
-  
   Widget _backgroundCover(BuildContext context) {
     return Container(
       width: double.infinity,
@@ -83,6 +82,7 @@ class RegisterPage extends StatelessWidget {
       ),
     );
   }
+
   Widget _textFieldLastName() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -94,6 +94,7 @@ class RegisterPage extends StatelessWidget {
       ),
     );
   }
+
   Widget _textFieldPhone() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -127,7 +128,8 @@ class RegisterPage extends StatelessWidget {
         keyboardType: TextInputType.text,
         obscureText: true,
         decoration: const InputDecoration(
-            hintText: "Confirmar contraseña", prefixIcon: Icon(Icons.lock_outline)),
+            hintText: "Confirmar contraseña",
+            prefixIcon: Icon(Icons.lock_outline)),
       ),
     );
   }
@@ -157,15 +159,22 @@ class RegisterPage extends StatelessWidget {
     );
   }
 
-  Widget _userAvatar(){
-    return  SafeArea(
+  Widget _userAvatar(BuildContext context) {
+    return SafeArea(
       child: Container(
         margin: const EdgeInsets.only(top: 23),
         alignment: Alignment.topCenter,
-        child: const CircleAvatar(
-          backgroundColor: Colors.white,
-          radius: 60,
-          backgroundImage: AssetImage("assets/img/person_icon.png"),
+        child: GestureDetector(
+          onTap: () => con.showAlertDialog(context),
+          child: GetBuilder<RegisterController>(
+              builder: (value) => CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 60,
+                    backgroundImage: con.imageFile != null
+                        ? FileImage(con.imageFile!)
+                        : AssetImage("assets/img/person_icon.png")
+                            as ImageProvider,
+                  )),
         ),
       ),
     );

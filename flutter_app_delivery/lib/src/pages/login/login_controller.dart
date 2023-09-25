@@ -42,7 +42,6 @@ class LoginController extends GetxController{
   }
 
   bool _ValidationLogin(String email, String password){
-
     bool okValidation = true;
 
     if(email.isEmpty){
